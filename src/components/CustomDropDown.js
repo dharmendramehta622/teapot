@@ -3,13 +3,7 @@ import React, { useState } from 'react';
 
 const CustomDropDown = ({ options, initialValue, onSelect }) => {
   const [selectedOption, setSelectedOption] = useState(initialValue);
-
-  const handleChange = (event) => {
-    const selectedIndex = options.indexOf(event.target.value);
-    setSelectedOption(event.target.value);
-    onSelect(selectedIndex);
-  };
-
+ 
 
   return (
     <div className="relative inline-block text-left" key={selectedOption}>
@@ -17,7 +11,7 @@ const CustomDropDown = ({ options, initialValue, onSelect }) => {
         <span className="block text-gray-700">{selectedOption}</span>
         <select
           value={selectedOption}
-          onChange={handleChange}
+          onChange={(ev)=>onSelect(ev)}
           className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
         >
           {options.map((option, index) => (
